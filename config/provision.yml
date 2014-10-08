@@ -1,0 +1,54 @@
+---
+- hosts: webservers
+  user: vagrant
+  sudo: True
+  tasks:
+  - name: update apt
+    apt: update_cache=yes
+  - name: install python-software-properties
+    action: apt pkg=python-software-properties state=present
+  - name: add repositiories
+    apt_repository: repo={{ item }}
+    with_items:
+      - "ppa:chris-lea/node.js"
+      - "ppa:ondrej/php5"
+  - name: update apt
+    apt: update_cache=yes
+  - name: add php ppa
+    action: apt_repository repo=ppa:ondrej/php5 state=present
+  - name: install web server packages
+    apt: pkg={{item}} state=installed
+    with_items:
+    - apache2
+    - phpmyadmin
+    - curl
+    - git
+    - mysql-server
+    - mysql-client
+    - php5
+  - name: install php packages
+    apt: pkg={{item}} state=installed
+    with_items:
+    - php-apc
+    - php-pear
+    - php5-mcrypt
+    - php5-cli
+    - php5-fpm
+    - php5-dev
+    - php5-gd
+    - php5-curl
+    - php5-mcrypt
+    - php5-xdebug
+    - php5-sqlite
+    - php5-mysql
+    - php5-memcache
+    - php5-intl
+    - php5-tidy
+    - php5-imap
+    - php5-imagick
+  - name: download and install composer
+    shell:
+        curl -sS https://getcomposer.org/installer | php && /bin/mv -f /home/vagrant/composer.phar /usr/local/bin/composer
+        creates="/usr/local/bin/composer"
+  - name: install latest symfony
+    shell: composer create-project symfony/framework-standard-edition /vagrant/src '2.5.*'

@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  user: vagrant
+  sudo: True
+  tasks:
+  - name: run symfony
+    action: php app/console server:run chdir=/vagrant/src
