@@ -50,5 +50,3 @@
     shell:
         curl -sS https://getcomposer.org/installer | php && /bin/mv -f /home/vagrant/composer.phar /usr/local/bin/composer
         creates="/usr/local/bin/composer"
-  - name: install latest symfony
-    shell: composer create-project symfony/framework-standard-edition /vagrant/src '2.5.*'
