@@ -3,8 +3,8 @@ Symfony with Vagrant and Ansible
 
 Clean configuration of Vagrant with Ansible and Virtualbox for Symfony 2.5.x deployment.
 
-1. Install [Virtualbox][virtualbox], [Vagrant][vagrant] and [Ansible][ansible].
-2. Initialize virtual machine and install privision with command `vagrant up`
+1. Install [VirtualBox][virtualbox] (v4.3+), [Vagrant][vagrant] (v1.4.3+) and [Ansible][ansible] (v1.7.2+).
+2. Initialize (download, run and configure) virtual machine with command `vagrant up`
 3. Connect to virtual machine with command `vagrant ssh`
 4. On virtual machine go to symfony directory with command `cd /vagrant/symfony`
 5. On virtual machine install  latest Symfony v2.5.x with command `composer create-project symfony/framework-standard-edition . '2.5.*'`
