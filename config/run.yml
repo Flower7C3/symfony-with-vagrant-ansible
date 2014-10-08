@@ -4,4 +4,4 @@
   sudo: True
   tasks:
   - name: run symfony
-    action: php app/console server:run chdir=/vagrant/src
+    shell: php app/console server:run chdir=/vagrant/src
