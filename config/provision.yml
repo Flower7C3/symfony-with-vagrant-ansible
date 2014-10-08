@@ -50,3 +50,5 @@
     shell:
         curl -sS https://getcomposer.org/installer | php && /bin/mv -f /home/vagrant/composer.phar /usr/local/bin/composer
         creates="/usr/local/bin/composer"
+  - name: create symfony project dir
+    file: path=/vagrant/symfony state=directory
