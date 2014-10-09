@@ -14,8 +14,6 @@
       - "ppa:ondrej/php5"
   - name: update apt
     apt: update_cache=yes
-  - name: add php ppa
-    action: apt_repository repo=ppa:ondrej/php5 state=present
   - name: install web server packages
     apt: pkg={{item}} state=installed
     with_items:
